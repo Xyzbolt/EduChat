@@ -47,9 +47,9 @@
 
 ## Hardware:
 
-- [ ] Test if hardware is capable of TCP/UDP
+- [ ] Test if hardware is capable of TCP/UDP - UDP ONLY, TCP IS TOO HIGH LOAD
 	- [ ] What amount of load can it handle
-- [ ] Test if battery is long enough to not die on high traffic
+- [ ] Test if battery is long enough to not die on high traffic - USES LESS THAN 1W DURING NORMAL OPERATION, WILL LAST A COUPLE DAYS ON A 10kmAh POWERBANK BUT BETTER TO PLUG INTO A RANDOM USB PORT 
 
 ## Storage:
 

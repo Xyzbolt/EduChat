@@ -91,6 +91,10 @@
 - can it handle the workload with 300 kb ram?
 - Bootstrap node for DHT?
 
+## Tracker disconnection from eduroam
+
+- Need a way to communicate to every device on educhat that tracker's ip changed
+
 
 # Future Reference
 ---

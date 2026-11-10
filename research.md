@@ -9,5 +9,5 @@
 **Step 3 (Fallback):** If nobody replies after 2 seconds (meaning you are the very first person on that VLAN), the app checks the hardcoded last-known IP, or checks the GitHub Gist to find the ESP32.
 
 
-#FOR THE TRACKER
+# FOR THE TRACKER
 An ESP32 can only handle 10-16 connections over TCP at a time, with UDP it can do thousands of packets. So any and all communication with the tracker should be done through UDP packets. For supernode checking we will use constant 'awake' pings.

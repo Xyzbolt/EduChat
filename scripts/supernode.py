@@ -45,7 +45,7 @@ def start_listening_for_connections(sock: socket.socket, supernodes, broadcast_i
             payload = json.loads(message_str)
             
             #sending subnet messages to all supernodes
-            if isinstance(payload, dict) and payload.get("application") == "educhat" and payload.get("message-type") == "communication":
+            if isinstance(payload, dict) and payload.get("application") == "educhat" and payload.get("message_type") == "communication":
                 print(f"{payload["public_id"]}: {payload["message"]}")
                 cross_subnet_payload = {
                         "application": "educhat",
@@ -53,10 +53,10 @@ def start_listening_for_connections(sock: socket.socket, supernodes, broadcast_i
                         "payload": payload
                     }
                 for supernode_addr in supernodes:
-                    sock.sendto(str(cross_subnet_payload).encode(), supernode_addr)
+                    sock.sendto(str(cross_subnet_payload).encode(), supernodes[supernode_addr])
 
             #broadcasting supernode messages to your subnet
-            if isinstance(payload, dict) and payload.get("application") == "educhat" and payload.get("message-type") == "broadcast-request":
+            if isinstance(payload, dict) and payload.get("application") == "educhat" and payload.get("message_type") == "broadcast-request":
                 broadcast_payload = payload.get("payload")
                 sock.sendto(str(broadcast_payload).encode(), (broadcast_ip, 6000))
                 print(f"{broadcast_payload["public_id"]}: {broadcast_payload["message"]}")

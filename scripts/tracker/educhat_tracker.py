@@ -8,25 +8,27 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 
 sock.bind(('0.0.0.0', 5000))
-
+sock.settimeout(1.0)
 connected_devices = []
 
-supernodes = []
+supernodes = {}
 
 
 def main():
     start_listening_for_connections()
 
 def start_listening_for_connections(sock=sock):
+    print("Tracker listening on port 5000...")
     while True:
         connection_response_payload_supernode = {}
         connection_response_payload_user = {}
-        data, node_addr = sock.recvfrom(1024)
+        
         try:
+            data, node_addr = sock.recvfrom(1024)
             message_str = data.decode("utf-8")
             payload = json.loads(message_str)
-
-            if isinstance(payload, dict) and payload.get("application") == "educhat" and payload.get("message-type") == "connection-request":
+            print(payload)
+            if isinstance(payload, dict) and payload.get("application") == "educhat" and payload.get("message_type") == "connection-request":
                 subnet = payload.get("subnet")
 
                 supernode_exists = any(subnet_x == subnet for subnet_x, supernode in supernodes)
@@ -39,10 +41,11 @@ def start_listening_for_connections(sock=sock):
                         "device_addr": node_addr
                     })
                     connection_response_payload_supernode = {
+                        "application": "educhat",
                         "role": "supernode",
                         "supernodes": supernodes, #list of all supernode addresses   
                     }
-                    sock.sendto(str(connection_response_payload_supernode).encode(), node_addr)
+                    sock.sendto(json.dumps(connection_response_payload_supernode).encode('utf-8'), node_addr)
                 else:
                     connected_devices.append({
                         "public_id": payload.get("public_id"),
@@ -53,8 +56,15 @@ def start_listening_for_connections(sock=sock):
                     connection_response_payload_user = {
                         "role": "ordinary_node",
                     }
-                    sock.sendto(str(connection_response_payload_user).encode(), node_addr)
+                    sock.sendto(json.dumps(connection_response_payload_user).encode(), node_addr)
                 print(f"{payload["public_id"]} with ip {node_addr} is now connected to educhat")
+            else:
+                print("not a dict or something")
+        except socket.timeout:
+                         continue
+        except KeyboardInterrupt:
+            print("\nShutting down...")
+            break
 
         except (UnicodeDecodeError, json.JSONDecodeError, KeyError):
             #ignoring unrelated broadcasts
@@ -65,5 +75,5 @@ def ping_supernodes(supernodes: dict):
     for supernode in supernodes.items:
         supernode_addr = supernode
 
-if __name__ == "__python__":
+if __name__ == "__main__":
     main()

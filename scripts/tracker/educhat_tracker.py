@@ -31,7 +31,6 @@ def start_listening_for_connections(sock=sock):
             if isinstance(payload, dict) and payload.get("application") == "educhat" and payload.get("message_type") == "connection-request":
                 subnet = payload.get("subnet")
 
-                supernode_exists = any(subnet_x == subnet for subnet_x, supernode in supernodes)
                 if supernodes.get(subnet) == None:  #have to change this because supernodes is now a list of dicts, with the key as the index
                     supernodes[subnet] = node_addr
                     connected_devices.append({

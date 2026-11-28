@@ -1,5 +1,6 @@
 # Outline
 
+
 1. Features
 2. Limitations
 3. Roadmap
@@ -13,7 +14,8 @@
 - DMs
 - high speed File transfer
 
-# Limitations
+
+# Obstacles
 
 
 1. Vlans
@@ -27,10 +29,9 @@
 - Serverless
 	- Cannot create persistent storage, must create a psuedo-ephemeral chat
 
+
 # Roadmap
 
-
-## UDP/TCP:
 
 ### 1. Local VLAN Chat
 
@@ -44,6 +45,7 @@
 - The public key is also used as an ID to identify the device, regardless of IP changes.
 - messages signed using ED25519 algorithm for identity
 - The keys are also used for E2E encryption in DMs
+
 ### 3. University Wide:
 
 - Use a tracker (simple ESP) with a static IP that saves IP addresses
@@ -77,8 +79,7 @@
 - Allow users to send files in DMs and other users to accept recieving.
 
 
-
-# RoadBlocks
+# Working Limitations
 
 
 ## Android
@@ -97,7 +98,6 @@
 
 
 # Future Reference
-
 
 
 ## Bootstrap node and Distributed Hash Table(DHT):

@@ -8,8 +8,9 @@ A university-wide chat and file-sharing platform that runs entirely over the loc
 
 # Outline
 1. Features
-2. Limitations
+2. Obstacles
 3. Roadmap
+4. Working Limitations
 
 
 # Features

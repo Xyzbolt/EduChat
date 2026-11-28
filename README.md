@@ -2,6 +2,10 @@
 
 A university-wide chat and file-sharing platform that runs entirely over the local network. **No server, no internet connection needed.**
 
+![Python](https://img.shields.io/badge/Python-181717?style=flat-square&logo=python&logoColor=white)
+![C++](https://img.shields.io/badge/C++-181717?style=flat-square&logo=cplusplus&logoColor=white)
+![ESP32](https://img.shields.io/badge/ESP32-181717?style=flat-square&logo=espressif&logoColor=white)
+
 # Outline
 1. Features
 2. Limitations

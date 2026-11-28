@@ -82,25 +82,25 @@
 # Working Limitations
 
 
-## Android
+### Android
 
 - how to keep process running?
 - Permissions required by the app
 
-## ESP
+### ESP
 
 - can it handle the workload with 300 kb ram?
 - Bootstrap node for DHT?
 
-## Tracker disconnection from eduroam
+### Tracker disconnection from EduRoam
 
 - Need a way to communicate to every device on educhat that tracker's ip changed
 
 
-# Future Reference
+# Reference (for future features)
 
 
-## Bootstrap node and Distributed Hash Table(DHT):
+### Bootstrap node and Distributed Hash Table(DHT):
 
 - A shared hash table
 - the hash table has a method of sharing between users

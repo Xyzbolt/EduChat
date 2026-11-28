@@ -1,6 +1,8 @@
+# Educhat
+
+A university-wide chat and file-sharing platform that runs entirely over the local network. **No server, no internet connection needed.**
+
 # Outline
-
-
 1. Features
 2. Limitations
 3. Roadmap
